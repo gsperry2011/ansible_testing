@@ -1,3 +1,6 @@
+# Run this script to copy sshkeys to systems in the ansible inventory. It requires a preexisting
+# local account on all of the systems. 
+
 import subprocess
 
 # ansible inventory .ini file
