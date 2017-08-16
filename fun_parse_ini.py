@@ -15,10 +15,6 @@ def parse_ini(filename):
             array_including_newlines = []
             array_including_newlines.append(line)
 
-
-
-
-            
             #removing \n characters from input
             for object in array_including_newlines:
                 array_including_blank_entries = []
@@ -31,11 +27,8 @@ def parse_ini(filename):
                 array_including_blank_entries = filter(None, array_including_blank_entries)
                 
                 #at this point array_including_blank_entries is a list of hostnames or ip addresses and ready for use.
-
-
+                #building our output array
                 for system in array_including_blank_entries:
-
                     ini_file_output.append(system)
-
 
     return ini_file_output
