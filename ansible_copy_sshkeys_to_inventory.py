@@ -1,3 +1,3 @@
-from password_auth_ssh_copy_id_from_array_input import password_auth_ssh_copy_id_from_array_input
+from fun_password_auth_ssh_copy_id_from_array_input import password_auth_ssh_copy_id_from_array_input
 
 password_auth_ssh_copy_id_from_array_input()
