@@ -2,5 +2,11 @@
 #ansible inventory
 
 from fun_password_auth_ssh_copy_id_from_array_input import password_auth_ssh_copy_id_from_array_input
+import sys
 
-password_auth_ssh_copy_id_from_array_input(svcacc=(sys.argv[1]), sshpassword=(sys.argv[2]), sshpubkey='/root/.ssh/id_rsa.pub')
+svcacc='root'
+sshpubkey='/root/.ssh/id_rsa.pub'
+input_file='/etc/ansible/hosts'
+sshpassword=''
+
+password_auth_ssh_copy_id_from_array_input(sshpassword, input_file, svcacc, sshpubkey)
