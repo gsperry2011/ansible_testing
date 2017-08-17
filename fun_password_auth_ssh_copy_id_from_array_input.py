@@ -1,4 +1,4 @@
-def password_auth_ssh_copy_id_from_array_input( sshpassword , input_file='/etc/ansible/hosts', svcacc = "root", sshpubkey = "/root/.ssh/id_rsa.pub" ):
+def password_auth_ssh_copy_id_from_array_input( sshpassword , input_file, svcacc, sshpubkey ):
 
     from fun_parse_ini import parse_ini
     #copy public ssh keys to systems in /etc/ansible/hosts
