@@ -5,8 +5,9 @@ from fun_password_auth_ssh_copy_id_from_array_input import password_auth_ssh_cop
 import sys
 
 svcacc='root'
+sshpassword=sys.argv[1]
 sshpubkey='/root/.ssh/id_rsa.pub'
 input_file='/etc/ansible/hosts'
-sshpassword=''
+
 
 password_auth_ssh_copy_id_from_array_input(sshpassword, input_file, svcacc, sshpubkey)
