@@ -52,16 +52,17 @@ def password_auth_ssh_copy_id_from_array_input( sshpassword , input_file, svcacc
         if pingcheck == 0:
 
             import time
-            print system
+
             # we define the bash command this was vs directly on subprocess because subprocess cannot
             # handle
 
             #print 'attempting to copy ssh key to %s' % system
             # white space inside quotes. 
             bashcmd = 'sshpass -p %s ssh-copy-id -i %s %s@%s' % ( sshpassword, sshpubkey, svcacc, system )
+            print bashcmd
             # intiating the copy of ssh keys to systems in the inventory
             subprocess.call(['bash','-c', bashcmd])
-            time.sleep(5)
+
           
         else:
             print 'WARN: %s is not responding, skipping!' % ( system )  
