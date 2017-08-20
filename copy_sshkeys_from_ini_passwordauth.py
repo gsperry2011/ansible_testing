@@ -54,12 +54,11 @@ def password_auth_ssh_copy_id_from_array_input( sshpassword , input_file, svcacc
             import time
 
             # we define the bash command this was vs directly on subprocess because subprocess cannot
-            # handle
+            # handle white space inside quotes.
+            # Note: StrictHostKeyChecking is what 'auto accepts' the SSH authenticity check,
+            # otherwise it would silently fail when called below.
+            bashcmd = 'sshpass -p %s ssh-copy-id -o StrictHostKeyChecking=no -i %s %s@%s' % ( sshpassword, sshpubkey, svcacc, system )
 
-            #print 'attempting to copy ssh key to %s' % system
-            # white space inside quotes. 
-            bashcmd = 'sshpass -p %s ssh-copy-id -i %s %s@%s' % ( sshpassword, sshpubkey, svcacc, system )
-            print bashcmd
             # intiating the copy of ssh keys to systems in the inventory
             subprocess.call(['bash','-c', bashcmd])
 
@@ -74,7 +73,7 @@ import sys
 svcacc='root'
 sshpassword=sys.argv[1]
 sshpubkey='~/.ssh/id_rsa.pub'
-input_file='./hosts'
+input_file='/etc/ansible/hosts'
 
 #show time
 password_auth_ssh_copy_id_from_array_input(sshpassword, input_file, svcacc, sshpubkey)
