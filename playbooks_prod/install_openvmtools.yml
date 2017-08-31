@@ -1,0 +1,8 @@
+- hosts: servers
+  remote_user: root
+  tasks:
+  
+  - name: install open-vm-tools latest
+    package:
+      name: 'open-vm-tools.x86_64'
+      state: latest
