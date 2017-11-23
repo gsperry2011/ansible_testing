@@ -1,0 +1,19 @@
+- hosts: testservers
+  remote_user: root
+  tasks:
+
+  - name: install puppet repository
+    yum:
+      name: https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+
+  - name: install puppet-agent
+    yum:
+      name: 'puppet-agent'
+      state: latest
+
+  - copy:
+      src: /git/ansible_testing/playbooks_dev/puppet.conf
+      dest: /etc/puppetlabs/puppet/puppet.conf
+      owner: root
+      group: root
+      mode: u+rw
