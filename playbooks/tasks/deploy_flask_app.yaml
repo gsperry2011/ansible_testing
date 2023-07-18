@@ -1,0 +1,10 @@
+    - name: install python flask dependencies
+      pip:
+        name: ['flask','flask-mysql']
+        state: present
+    - name: copy application code to web server
+      copy:
+        src: app.py
+        dest: /opt/app.py
+    - name: run flask web server
+      shell: FLASK_APP=app.py nohup flask run --host=0.0.0.0 &

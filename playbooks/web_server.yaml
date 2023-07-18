@@ -1,0 +1,14 @@
+# Ansible playbook to create a flask webserver app with a mysql backend all on one system
+-
+  name: deploy web application server all-in-one
+  # This targets the group but we could match based on name of system like dbserver* 
+  hosts: db_and_web_servers
+  # run stuff as 'sudo' because ansible does not connect as root
+  become: true
+  vars:
+    db_name: employee_db
+    db_user: test
+    db_user_password: password123
+  tasks:
+    - include: tasks/deploy_db.yaml
+    - include: tasks/deploy_flask_app.yaml

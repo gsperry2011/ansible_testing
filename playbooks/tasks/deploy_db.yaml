@@ -1,0 +1,25 @@
+    - name: install dependencies
+      dnf:
+        # Note: could not locate package equiv for 'build-essentials' on RHEL
+        name: ['python3','python3-setuptools','python3-devel','python3-pip', 'python3-PyMySQL']
+        state: installed
+    - name: install mysql database
+      dnf:
+        name: ['mysql','mysql-server']
+        state: installed
+    - name: start mysql daemon
+      service:
+        name: mysqld
+        state: started
+        # enables automatic startup of daemon on reboot
+        enabled: yes
+    - name: create application database
+      mysql_db:
+        name: "{{ db_name }}"
+        state: present
+    - name: create application database user
+      mysql_user:
+        name: "{{ db_user }}"
+        password: "{{ db_user_password }}"
+        priv: '*.*:ALL'
+        state: present
